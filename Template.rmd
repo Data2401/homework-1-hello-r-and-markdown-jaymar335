@@ -63,17 +63,23 @@ The correlation (r) for the dino and star dataset is similar despite their visua
 
 ### Exercise 4
 
-(Add code and narrative as needed. Note that two R chunks are given but they are not labeled. Use the convention from above to name them appropriately.)
+Plot y vs. x for circle dataset:
 
-```{r}
-
-
-```
-
-```{r}
-
+```{r circle-plot}
+circle_data <- datasaurus_dozen %>%
+  filter(dataset == "circle")
+ggplot(data = circle_data, mapping = aes(x = x, y = y)) +
+  geom_point()
 
 ```
+Calculate the correlation coefficient between x and y for this dataset:
+
+```{r cor-circle}
+circle_data %>%
+  summarize(r = cor(x,y))
+
+```
+The correlation (r) for the dino, star and circle dataset is similar despite their visual difference, they both indicate almost no linear relationship.
 
 ### Exercise 5
 
